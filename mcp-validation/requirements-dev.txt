@@ -1,0 +1,4 @@
+# Extra dependencies used only to (re)generate the sample STL — not needed to run the
+# server or the smoke test against the committed sample.
+-r requirements.txt
+manifold3d>=3.0    # boolean union backend for scripts/make_sample.py
