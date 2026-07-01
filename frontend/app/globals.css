@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-grotesk: 'Space Grotesk', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    @apply bg-paper text-ink font-sans;
+    font-feature-settings: 'ss01', 'cv01';
+  }
+  ::selection {
+    @apply bg-filament text-paper;
+  }
+}
+
+@layer components {
+  /* engineering-drawing dotted grid — the ambient texture of the whole app */
+  .blueprint-grid {
+    background-image: radial-gradient(rgba(58, 74, 90, 0.14) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+
+  /* a measurement value — mono, tabular, the way dimensions read on a drawing */
+  .measure {
+    @apply font-mono tabular-nums tracking-tight;
+  }
+
+  /* eyebrow label — small, spaced, structural */
+  .eyebrow {
+    @apply font-mono text-[11px] uppercase tracking-[0.18em] text-ink-muted;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded font-sans text-sm
+           px-4 h-10 border border-line-strong bg-paper-raised text-ink
+           transition-colors hover:bg-paper-sunk active:scale-[0.98]
+           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-filament;
+  }
+  .btn-primary {
+    @apply bg-ink text-paper border-ink hover:bg-ink-soft;
+  }
+  .btn-accent {
+    @apply bg-filament text-paper border-filament hover:bg-filament-soft;
+  }
+
+  .card {
+    @apply rounded-lg border border-line bg-paper-raised;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
